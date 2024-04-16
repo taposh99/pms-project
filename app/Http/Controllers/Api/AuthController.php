@@ -15,6 +15,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class AuthController extends Controller
 {
 
@@ -65,6 +66,21 @@ class AuthController extends Controller
 
             $success['token'] =  $user->createToken('MyAuthApp')->plainTextToken;
             return sendSuccessResponse('Logged in Successfully!!', '200', [$success, $data]);
+        } catch (Exception $exception) {
+            return sendErrorResponse('Something went wrong: ' . $exception->getMessage());
+        }
+    }
+
+
+    public function logout(Request $request)
+    {
+        try {
+            $user = Auth::user();
+
+            if ($token = $user->currentAccessToken()) {
+                $token->delete();
+                return sendSuccessResponse('Logout successfu');
+            }
         } catch (Exception $exception) {
             return sendErrorResponse('Something went wrong: ' . $exception->getMessage());
         }
