@@ -22,7 +22,7 @@
 
 <body>
 
-    <div id="example"></div>
+    <div id="root"></div>
 </body>
 
 </html>
