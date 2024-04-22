@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { RouterProvider } from 'react-router-dom';
+import router from './Routes/Router';
 
 function Main() {
     return (
-        <div className="test">
-            <h1>Hello</h1>
-        </div>
+        <RouterProvider router={router} />
     );
 }
 
@@ -16,7 +16,7 @@ if (document.getElementById('root')) {
 
     Index.render(
         <React.StrictMode>
-            <Main/>
+            <Main />
         </React.StrictMode>
     )
 }
