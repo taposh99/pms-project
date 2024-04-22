@@ -5,7 +5,8 @@ import SignIn from "../Pages/AccessControl/SignIn/SignIn";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Home />,
+        // element: <Home />,
+        element: <SignIn />
     },
     {
         path: "/sign-in",
