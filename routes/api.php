@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\DistrictController;
 use App\Http\Controllers\Api\DivisionController;
 use App\Http\Controllers\Api\SubCategoryController;
 use App\Http\Controllers\Api\SubCategotyController;
@@ -56,4 +57,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('division', [DivisionController::class, 'storeDivision']);
     Route::put('division/{division}', [DivisionController::class, 'updateDivision']);
     Route::delete('division/{division}', [DivisionController::class, 'deleteDivision']);
+
+    /**
+     * District API
+     */
+
+    Route::get('district', [DistrictController::class, 'getAllDistrict']);
+    Route::get('district/{district}', [DistrictController::class, 'getDistrict']);
+    Route::post('district', [DistrictController::class, 'storeDistrict']);
+    Route::put('district/{district}', [DistrictController::class, 'updateDistrict']);
+    Route::delete('district/{district}', [DistrictController::class, 'deleteDistrict']);
 });
