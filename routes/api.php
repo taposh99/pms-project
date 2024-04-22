@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\SubCategoryController;
+use App\Http\Controllers\Api\SubCategotyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,11 +30,20 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
 
     /**
-     * Product Category
+     * Category Api
      */
     Route::get('/category', [CategoryController::class, 'getAllCategory']);
     Route::get('/category/{category}', [CategoryController::class, 'getCategory']);
     Route::post('/category', [CategoryController::class, 'storeCategory']);
     Route::put('/category/{category}', [CategoryController::class, 'updateCategory']);
     Route::delete('/category/{category}', [CategoryController::class, 'deleteCategory']);
+
+    /**
+     * SubCategory API
+     */
+    Route::get('/subcategory', [SubCategoryController::class, 'getAllSubCategory']);
+    Route::get('/subcategory/{subCategory}', [SubCategoryController::class, 'getSubCategory']);
+    Route::post('/subcategory', [SubCategoryController::class, 'storeSubCategory']);
+    Route::put('/subcategory/{subCategory}', [SubCategoryController::class, 'updateSubCategory']);
+    Route::delete('/subcategory/{subCategory}', [SubCategoryController::class, 'deleteSubCategory']);
 });
