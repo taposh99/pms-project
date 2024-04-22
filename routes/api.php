@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\DivisionController;
 use App\Http\Controllers\Api\SubCategoryController;
 use App\Http\Controllers\Api\SubCategotyController;
 use Illuminate\Http\Request;
@@ -46,4 +47,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/subcategory', [SubCategoryController::class, 'storeSubCategory']);
     Route::put('/subcategory/{subCategory}', [SubCategoryController::class, 'updateSubCategory']);
     Route::delete('/subcategory/{subCategory}', [SubCategoryController::class, 'deleteSubCategory']);
+
+    /**
+     * Divison API
+     */
+    Route::get('division', [DivisionController::class, 'getAllDivision']);
+    Route::get('division/{division}', [DivisionController::class, 'getDivision']);
+    Route::post('division', [DivisionController::class, 'storeDivision']);
+    Route::put('division/{division}', [DivisionController::class, 'updateDivision']);
+    Route::delete('division/{division}', [DivisionController::class, 'deleteDivision']);
 });
