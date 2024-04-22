@@ -5,9 +5,8 @@
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
-
-
 use Illuminate\Http\UploadedFile;
+
 
 
 function sendSuccessResponse(string $message, int $statusCode = 200, $payload = []): JsonResponse
