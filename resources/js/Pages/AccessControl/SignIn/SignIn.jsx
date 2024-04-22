@@ -11,8 +11,8 @@ const SignIn = () => {
             password: '',
         },
         validationSchema: Yup.object({
-            email: Yup.string().email('Invalid email address').required('Required'),
-            password: Yup.string().max(20, 'Must be 20 characters or less').min(6, 'Minimum 6 characters').required('Required'),
+            email: Yup.string().email('Invalid email address').required('Email is required'),
+            password: Yup.string().required('Password is required'),
         }),
         onSubmit: values => {
             console.log(values);
@@ -24,7 +24,7 @@ const SignIn = () => {
             <Header></Header>
             <div className='font-sora bg-[#FAFAFA] flex justify-center min-h-screen py-16'>
                 <form onSubmit={handleSubmit} className='bg-white shadow-[-2px_2px_15px_1px_rgba(0,0,0,0.2)] w-2/5 px-5 py-8'>
-                    <h4 className='text-[26px] mb-10'>Log In</h4>
+                    <p className='text-[26px] mb-10'>Log In</p>
                     <label htmlFor="email" className='text-sm block mb-2'>Email Address</label>
                     <input
                         id="email"
@@ -32,7 +32,7 @@ const SignIn = () => {
                         type="email"
                         onChange={handleChange}
                         value={values.email}
-                        className='bg-[#F5F5F5] px-2 py-3 w-full border-b-2 border-[#D3D3D3] mb-5 focus:outline-none'
+                        className='bg-[#F5F5F5] px-2 py-3 w-full border-b-[1px] border-[#D3D3D3] mb-5 focus:outline-none'
                     />
                     {touched.email && errors.email ? (
                         <div className='text-xs text-red-600 mb-5'>{errors.email}</div>
@@ -45,7 +45,7 @@ const SignIn = () => {
                         type="password"
                         onChange={handleChange}
                         value={values.password}
-                        className='bg-[#F5F5F5] px-2 py-3 w-full border-b-2 border-[#D3D3D3] mb-5 focus:outline-none'
+                        className='bg-[#F5F5F5] px-2 py-3 w-full border-b-[1px] border-[#D3D3D3] mb-5 focus:outline-none'
                     />
                     {touched.password && errors.password ? (
                         <div className='text-xs text-red-600 mb-5'>{errors.password}</div>

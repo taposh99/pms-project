@@ -15,11 +15,10 @@
 
 
     @viteReactRefresh
-    @vite(['resources/js/index.css', 'resources/js/Main.jsx'])
+    @vite(['resources/js/index.css', 'resources/js/main.jsx'])
 </head>
 
 <body>
-
     <div id="root"></div>
 </body>
 
