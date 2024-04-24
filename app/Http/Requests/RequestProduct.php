@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\Rule;
 
 class RequestProduct extends FormRequest
 {
@@ -25,13 +26,25 @@ class RequestProduct extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
+
             'category_id' => 'required',
             'price' => 'required',
+            'name' => 'required',
             'issue_date' => 'required',
-            'product_id' => 'required|string',
-            'images' => 'nullable|mimes:jpg,jpeg,png,gif'
+            'images' => 'nullable|mimes:jpg,jpeg,png,gif',
+            'product_id' => [
+                'required',
+                Rule::unique('products')->where(function ($query) {
+                    return $query->where('product_id', $this->product_id);
+                }),
+            ],
 
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'product_id.unique' => 'product id ' . $this->product_id . ' has already been taken.',
         ];
     }
 
