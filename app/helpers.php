@@ -28,10 +28,7 @@ function sendErrorResponse(string $message, int $statusCode = 200, $payload = []
 }
 
 
-
-class FileHelper
-{
-    public static function uploadFile($file, $folder)
+   function uploadFile($file, $folder)
     {
         // If no file is provided, return null
         if (!$file instanceof UploadedFile || $file === null) {
@@ -61,4 +58,4 @@ class FileHelper
         // Return the file path
         return 'uploads/' . ($isPdf ? 'pdf' : 'images') . '/' . $fileName;
     }
-}
+

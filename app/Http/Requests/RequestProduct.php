@@ -29,7 +29,9 @@ class RequestProduct extends FormRequest
             'category_id' => 'required',
             'price' => 'required',
             'issue_date' => 'required',
-            'product_code' => 'required|string',
+            'product_id' => 'required|string',
+            'images' => 'nullable|mimes:jpg,jpeg,png,gif'
+
         ];
     }
 

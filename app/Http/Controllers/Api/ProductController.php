@@ -15,11 +15,10 @@ class ProductController extends Controller
 {
     public function storeProduct(RequestProduct $request): JsonResponse
     {
-       
-
         try {
-            $product =  Product::create([
-                'product_code'     => $request->product_code,
+
+            Product::create([
+                'product_id'     => $request->product_id,
                 'name'             => $request->name,
                 'category_id'      => $request->category_id,
                 'sub_category_id'  => $request->sub_category_id,
@@ -30,11 +29,8 @@ class ProductController extends Controller
                 'warehouse_name'   => $request->warehouse_name,
                 'area'             => $request->area,
                 'zip_code'         => $request->zip_code,
+                'image'             => uploadFile($request->file('images'), 'image'),
             ]);
-            uploadFile($request->file('images'), 'uploads');
-
-         
-
         } catch (Exception $exception) {
             return sendErrorResponse('Something went wrong: ' . $exception->getMessage());
         }
