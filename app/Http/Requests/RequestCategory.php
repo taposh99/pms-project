@@ -6,6 +6,8 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\Rule;
+
 
 class RequestCategory extends FormRequest
 {
@@ -25,10 +27,20 @@ class RequestCategory extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|unique:categories',
+            'name' => [
+                'required',
+                Rule::unique('products')->where(function ($query) {
+                    return $query->where('name', $this->name);
+                }),
+            ],
         ];
     }
-
+    public function messages()
+    {
+        return [
+            'name.unique' => 'This ' . $this->name . ' has already been taken.',
+        ];
+    }
     protected function failedValidation(Validator $validator)
     {
         $errors = $validator->errors(); // Get the list of validation errors
