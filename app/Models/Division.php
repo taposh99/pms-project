@@ -11,8 +11,13 @@ class Division extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
-    // public function district(): HasMany
-    // {
-    //     return  $this->hasMany(District::class);
-    // }
+    public function district(): HasMany
+    {
+        return  $this->hasMany(District::class);
+    }
+    
+    public function product(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
 }

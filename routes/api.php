@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\DistrictController;
 use App\Http\Controllers\Api\DivisionController;
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SubCategoryController;
 use App\Http\Controllers\Api\SubCategotyController;
 use Illuminate\Http\Request;
@@ -67,4 +68,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('district', [DistrictController::class, 'storeDistrict']);
     Route::put('district/{district}', [DistrictController::class, 'updateDistrict']);
     Route::delete('district/{district}', [DistrictController::class, 'deleteDistrict']);
+
+    /**
+     * Product API
+     */
+
+    Route::get('product', [ProductController::class, 'getAllProduct']);
+    Route::get('product/{product}', [ProductController::class, 'getProduct']);
+    Route::post('product', [ProductController::class, 'storeProduct']);
+    Route::put('product/{product}', [ProductController::class, 'updateProduct']);
+    Route::delete('product/{product}', [ProductController::class, 'deleteProduct']);
 });
