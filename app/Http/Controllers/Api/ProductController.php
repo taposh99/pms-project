@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function storeProduct(RequestProduct $request): JsonResponse
     {
         try {
-
+            DB::beginTransaction();
             Product::create([
                 'product_id'     => $request->product_id,
                 'name'             => $request->name,
@@ -31,6 +31,7 @@ class ProductController extends Controller
                 'zip_code'         => $request->zip_code,
                 'image'             => uploadFile($request->file('images'), 'image'),
             ]);
+            DB::commit();
         } catch (Exception $exception) {
             return sendErrorResponse('Something went wrong: ' . $exception->getMessage());
         }
