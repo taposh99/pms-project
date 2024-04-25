@@ -1,8 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { signinSlice } from "./features/signin/signin";
+import userSlice from "./features/auth/authSlice";
+import { authApi } from "./features/auth/authApi";
 
-export const store = configureStore({
+const store = configureStore({
     reducer: {
-        signinSlice: signinSlice
+        // userSlice: userSlice.reducer
+        [authApi.reducerPath]: authApi.reducer,
     },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(authApi.middleware),
 });
+
+export default store;

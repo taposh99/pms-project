@@ -79,7 +79,7 @@ class AuthController extends Controller
 
             if ($token = $user->currentAccessToken()) {
                 $token->delete();
-                return sendSuccessResponse('Logout successfu');
+                return sendSuccessResponse('Logout successfull');
             }
         } catch (Exception $exception) {
             return sendErrorResponse('Something went wrong: ' . $exception->getMessage());

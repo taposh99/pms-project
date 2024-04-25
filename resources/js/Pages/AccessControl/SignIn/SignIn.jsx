@@ -3,8 +3,11 @@ import Header from '../../../Component/Header/Header';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
+import { useLoginUserMutation } from '../../../redux/features/auth/authApi';
 
 const SignIn = () => {
+    const [userLogin, { isLoading, error, data }] = useLoginUserMutation();
+
     const { handleSubmit, handleChange, handleBlur, errors, values, touched } = useFormik({
         initialValues: {
             email: '',
@@ -14,8 +17,26 @@ const SignIn = () => {
             email: Yup.string().email('Invalid email address').required('Email is required'),
             password: Yup.string().required('Password is required'),
         }),
-        onSubmit: values => {
-            console.log(values);
+        onSubmit: async (values) => {
+            try {
+                console.log(values);
+                // await userLogin(values).unwrap();
+                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                console.log(csrfToken);
+                
+                const response = await fetch('http://127.0.0.1:8000/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken // Include CSRF token in the headers
+                    },
+                    body: JSON.stringify(values),
+                })
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.log('error is', error);
+            }
         },
     });
 
