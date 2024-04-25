@@ -10,7 +10,12 @@ export const authApi = createApi({
             query: (data) => ({
                 url: "/login",
                 method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
                 body: data,
+                credentials: 'include'
             }),
         }),
     }),
