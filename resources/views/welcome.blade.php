@@ -21,5 +21,5 @@
 <body>
     <div id="root"></div>
 </body>
-
+{{-- <script src="{{asset('build/assets/Main-CvxgFSsN.js')}}"></script> --}}
 </html>
