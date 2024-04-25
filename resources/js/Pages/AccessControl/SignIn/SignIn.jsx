@@ -18,30 +18,9 @@ const SignIn = () => {
             password: Yup.string().required('Password is required'),
         }),
         onSubmit: async (values) => {
-            try {
-                console.log(values);
-                await userLogin(values).unwrap();
-                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-                // const response = await fetch('http://127.0.0.1:8000/api/login', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //         'X-CSRF-TOKEN': csrfToken
-                //     },
-                //     body: JSON.stringify(values),
-                //     credentials: 'include'
-                // });
-
-                // if (!response.ok) {
-                //     throw new Error('HTTP error, status = ' + response.status);
-                // }
-
-                // const data = await response.json();
-                // console.log(data);
-            } catch (error) {
-                console.error('Error:', error);
-            }
+            const user = await userLogin(values).unwrap();
+            console.log(values);
+            console.log(user);
         },
 
 
