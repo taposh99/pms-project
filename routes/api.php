@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\DivisionController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SubCategoryController;
 use App\Http\Controllers\Api\SubCategotyController;
+use App\Http\Controllers\Api\SupplierCategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -78,4 +79,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('product', [ProductController::class, 'storeProduct']);
     Route::put('product/{product}', [ProductController::class, 'updateProduct']);
     Route::delete('product/{product}', [ProductController::class, 'deleteProduct']);
+
+    /**
+     * Supplier Category API
+     */
+
+    Route::get('/supplier-category', [SupplierCategoryController::class, 'getAllSupplierCategory']);
+    Route::get('/supplier-category/{supplierCategory}', [SupplierCategoryController::class, 'getSupplierCategory']);
+    Route::post('/supplier-category', [SupplierCategoryController::class, 'storeSupplierCategory']);
+    Route::put('/supplier-category/{supplierCategory}', [SupplierCategoryController::class, 'updateSupplierCategory']);
+    Route::delete('/supplier-category/{supplierCategory}', [SupplierCategoryController::class, 'deleteSupplierCategory']);
 });
