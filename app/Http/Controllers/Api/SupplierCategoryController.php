@@ -67,7 +67,7 @@ class SupplierCategoryController extends Controller
         } catch (Exception $exception) {
             return sendErrorResponse('Something went wrong: ' . $exception->getMessage());
         }
-        return sendSuccessResponse('Update Successfully!!', '200');
+        return sendSuccessResponse('Update supplier category Successfully!!', '200');
     }
 
     public function deleteSupplierCategory(SupplierCategory $supplierCategory): JsonResponse
