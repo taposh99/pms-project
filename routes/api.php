@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\DistrictController;
 use App\Http\Controllers\Api\DivisionController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SubCategoryController;
 use App\Http\Controllers\Api\SubCategotyController;
 use App\Http\Controllers\Api\SupplierCategoryController;
+use App\Http\Controllers\Api\SupplierController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -89,4 +91,25 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/supplier-category', [SupplierCategoryController::class, 'storeSupplierCategory']);
     Route::put('/supplier-category/{supplierCategory}', [SupplierCategoryController::class, 'updateSupplierCategory']);
     Route::delete('/supplier-category/{supplierCategory}', [SupplierCategoryController::class, 'deleteSupplierCategory']);
+
+    
+    /**
+     * Country API
+     */
+
+     Route::get('country', [CountryController::class, 'getAllCountry']);
+     Route::get('country/{country}', [CountryController::class, 'getCountry']);
+     Route::post('country', [CountryController::class, 'storeCountry']);
+     Route::put('country/{country}', [CountryController::class, 'updateCountry']);
+     Route::delete('country/{country}', [CountryController::class, 'deleteCountry']);
+
+      /**
+     * Supplier API
+     */
+
+     Route::get('supplier', [SupplierController::class, 'getAllSupplier']);
+     Route::get('supplier/{supplier}', [SupplierController::class, 'getSupplier']);
+     Route::post('supplier', [SupplierController::class, 'storeSupplier']);
+     Route::put('supplier/{supplier}', [SupplierController::class, 'updateSupplier']);
+     Route::delete('supplier/{supplier}', [SupplierController::class, 'deleteSupplier']);
 });
