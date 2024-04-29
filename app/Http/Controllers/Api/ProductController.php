@@ -37,7 +37,7 @@ class ProductController extends Controller
         try {
             DB::beginTransaction();
             Product::create([
-                'product_id'     => $request->product_id,
+                'product_code'     => $request->product_code,
                 'name'             => $request->name,
                 'category_id'      => $request->category_id,
                 'sub_category_id'  => $request->sub_category_id,
@@ -62,7 +62,7 @@ class ProductController extends Controller
         try {
             DB::beginTransaction();
             $product->update([
-                'product_id'     => $request->product_id,
+                'product_code'     => $request->product_code,
                 'name'             => $request->name,
                 'category_id'      => $request->category_id,
                 'sub_category_id'  => $request->sub_category_id,
