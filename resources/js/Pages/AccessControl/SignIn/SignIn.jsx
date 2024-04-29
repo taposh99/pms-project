@@ -4,9 +4,12 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import { useLoginUserMutation } from '../../../redux/features/auth/authApi';
+import { useDispatch } from 'react-redux';
+import { setUserInfo } from '../../../redux/features/auth/authSlice';
 
 const SignIn = () => {
     const [userLogin, { isLoading, error, data }] = useLoginUserMutation();
+    const dispatch = useDispatch();
 
     const { handleSubmit, handleChange, handleBlur, errors, values, touched } = useFormik({
         initialValues: {
@@ -21,6 +24,7 @@ const SignIn = () => {
             const user = await userLogin(values).unwrap();
             console.log(values);
             console.log(user);
+            dispatch(setUserInfo(user));
         },
 
 
