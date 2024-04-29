@@ -6,7 +6,7 @@ import { FaRegBell } from "react-icons/fa";
 
 const DashboardHeader = () => {
     return (
-        <header className='relative  bg-white border-b-[1px] border-[#E9E9E9] px-10 py-4 flex items-center justify-between'>
+        <header className='relative bg-white border-b-[1px] border-[#E9E9E9] px-10 py-2 flex items-center justify-between'>
             <div className='relative'>
                 <input
                     type="search"
@@ -14,7 +14,7 @@ const DashboardHeader = () => {
                     id="search"
                     className='border-[1px] border-[#E6E6E6] pl-9 pr-2 py-2 w-[265px] rounded-xl focus:outline-none'
                 />
-                <button className='absolute top-1/2 -translate-y-1/2 left-2'>
+                <button className='btn absolute top-1/2 -translate-y-1/2 left-2'>
                     <FiSearch className='text-[#6B6B6B] text-2xl' />
                 </button>
             </div>
@@ -45,6 +45,10 @@ const DashboardHeader = () => {
                         <h6 className='font-sora text-[#6B6B6B] text-sm'>Procurement Manager</h6>
                     </div>
                 </button>
+            </div>
+            <div className='absolute w-[300px] top-[calc(100%+3px)] right-10 flex items-center justify-between bg-white p-3 shadow-[-2px_2px_10px_1px_rgba(0,0,0,0.1)]'>
+                <button className='btn font-sora text-sm text-[#6B6B6B] px-4 py-3 border border-[#C4C4C4]'>Profile</button>
+                <button className='btn font-sora text-sm text-[#6B6B6B] px-4 py-3 border border-[#C4C4C4]'>Logout</button>
             </div>
         </header>
     );
