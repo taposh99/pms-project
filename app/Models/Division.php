@@ -20,4 +20,9 @@ class Division extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function supplier(): HasMany
+    {
+        return $this->hasMany(Supplier::class);
+    }
 }
