@@ -18,7 +18,7 @@ const DashboardHeader = () => {
                     <FiSearch className='text-[#6B6B6B] text-2xl' />
                 </button>
             </div>
-            <div>
+            <div className='flex items-center gap-5'>
                 <div className='flex items-center gap-5'>
                     <button className='bg-[#E6E6E6] p-2 rounded-md'>
                         <span className='block border-2 border-[#6B6B6B] p-1 rounded-full'>
@@ -36,6 +36,15 @@ const DashboardHeader = () => {
                         </span>
                     </button>
                 </div>
+                <button className='flex items-center gap-2'>
+                    <div className='w-12 h-12 rounded-full overflow-hidden'>
+                        <img src="/user.jpg" alt="" />
+                    </div>
+                    <div className=''>
+                        <h1 className='font-sora font-semibold text-lg'>Jack Bakley Rion</h1>
+                        <h6 className='font-sora text-[#6B6B6B] text-sm'>Procurement Manager</h6>
+                    </div>
+                </button>
             </div>
         </header>
     );
