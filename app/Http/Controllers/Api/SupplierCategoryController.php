@@ -34,17 +34,7 @@ class SupplierCategoryController extends Controller
         }
     }
 
-    // public function storeSupplierCategory(RequestSupplierCategory $request): JsonResponse
-    // {
-    //     try {
-    //         SupplierCategory::create([
-    //             'name' => $request->name,
-    //         ]);
-    //     } catch (Exception $exception) {
-    //         return sendErrorResponse('Something went wrong: ' . $exception->getMessage());
-    //     }
-    //     return sendSuccessResponse('Supplier Category create Successfully!!', '200');
-    // }
+
 
     public function storeSupplierCategory(RequestSupplierCategory $request): JsonResponse
     {
