@@ -15,13 +15,10 @@
 
 
     @viteReactRefresh
-
-    @vite(['resources/js/index.css', 'resources/js/Main.jsx'])
-    {{-- <link rel="stylesheet" href="{{asset('build/assets/index-DjCJeghr.css')}}"> --}}
+    @vite(['resources/js/index.css', 'resources/js/main.jsx'])
 </head>
 
 <body>
-
     <div id="root"></div>
 </body>
 {{-- <script src="{{asset('build/assets/Main-CvxgFSsN.js')}}"></script> --}}
