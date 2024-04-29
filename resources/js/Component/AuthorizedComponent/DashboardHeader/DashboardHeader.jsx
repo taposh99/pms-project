@@ -6,7 +6,7 @@ import { FaRegBell } from "react-icons/fa";
 
 const DashboardHeader = () => {
     return (
-        <header className='bg-white border-b-[1px] border-[#E9E9E9] px-10 py-4 flex items-center justify-between'>
+        <header className='relative  bg-white border-b-[1px] border-[#E9E9E9] px-10 py-4 flex items-center justify-between'>
             <div className='relative'>
                 <input
                     type="search"
@@ -19,7 +19,7 @@ const DashboardHeader = () => {
                 </button>
             </div>
             <div className='flex items-center gap-5'>
-                <div className='flex items-center gap-5'>
+                <div className='flex items-center gap-5 '>
                     <button className='bg-[#E6E6E6] p-2 rounded-md'>
                         <span className='block border-2 border-[#6B6B6B] p-1 rounded-full'>
                             <FaQuestion className='text-[#6B6B6B]' />
