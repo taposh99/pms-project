@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SubCategoryController;
 use App\Http\Controllers\Api\SubCategotyController;
 use App\Http\Controllers\Api\SupplierCategoryController;
+use App\Http\Controllers\Api\SupplierController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -101,4 +102,14 @@ Route::middleware('auth:sanctum')->group(function () {
      Route::post('country', [CountryController::class, 'storeCountry']);
      Route::put('country/{country}', [CountryController::class, 'updateCountry']);
      Route::delete('country/{country}', [CountryController::class, 'deleteCountry']);
+
+      /**
+     * Supplier API
+     */
+
+     Route::get('supplier', [SupplierController::class, 'getAllSupplier']);
+     Route::get('supplier/{supplier}', [SupplierController::class, 'getSupplier']);
+     Route::post('supplier', [SupplierController::class, 'storeSupplier']);
+     Route::put('supplier/{supplier}', [SupplierController::class, 'updateSupplier']);
+     Route::delete('supplier/{supplier}', [SupplierController::class, 'deleteSupplier']);
 });
