@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../../../Component/Header/Header';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -11,6 +11,7 @@ const SignIn = () => {
     const [userLogin, { isLoading, error, data }] = useLoginUserMutation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [demoLoading, setDemoLoading] = useState(false);
 
     const { handleSubmit, handleChange, resetForm, errors, values, touched } = useFormik({
         initialValues: {
@@ -22,12 +23,15 @@ const SignIn = () => {
             password: Yup.string().required('Password is required'),
         }),
         onSubmit: async (values) => {
+            setDemoLoading(true);
             const user = await userLogin(values).unwrap();
             console.log(user);
             if (user && user.data[0]?.token) {
                 resetForm();
+                setDemoLoading(false);
                 navigate('/dashboard');
             }
+            setDemoLoading(false);
             user.data[0]?.token && dispatch(setUserInfo(user));
         },
 
@@ -66,7 +70,12 @@ const SignIn = () => {
                         <div className='text-xs text-red-600 mb-5'>{errors.password}</div>
                     ) : null}
 
-                    <button type="submit" className='bg-[#047CEB] text-white w-full py-3 rounded-md mt-8 mb-7 active:scale-95 duration-300'>Submit</button>
+                    <button type="submit" className='relative bg-[#047CEB] text-white w-full py-3 rounded-md mt-8 mb-7 active:scale-95 duration-300'>
+                        {demoLoading &&
+                            <span className="absolute left-48 w-6 h-6 animate-[spin_1s_linear_infinite] rounded-full border-4 border-r-white border-sky-400"></span>
+                        }
+                        Submit
+                    </button>
                     <Link className='block text-sm text-center underline mb-16'>Forgotten Password?</Link>
                 </form>
             </div>
