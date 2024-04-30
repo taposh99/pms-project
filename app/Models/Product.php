@@ -33,4 +33,9 @@ class Product extends Model
     {
         return $this->belongsTo(District::class);
     }
+
+    public function purchaseOrder(): HasMany
+    {
+        return $this->hasMany(PurchaseOrder::class);
+    }
 }
