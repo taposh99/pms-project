@@ -3,10 +3,12 @@ import { FiSearch } from "react-icons/fi";
 import { FaQuestion } from "react-icons/fa6";
 import { PiGearBold } from "react-icons/pi";
 import { FaRegBell } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const DashboardHeader = () => {
     const [showProfile, setShowProfile] = useState(false);
     const profileRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -65,9 +67,9 @@ const DashboardHeader = () => {
                     </div>
                 </button>
             </div>
-            <div onClick={(e)=>e.stopPropagation()} className={`absolute w-[300px] ${showProfile ? 'right-10' : '-right-96'} top-[calc(100%+3px)] flex items-center justify-between bg-white p-3 shadow-[-2px_2px_10px_1px_rgba(0,0,0,0.1)] duration-300`}>
+            <div onClick={(e) => e.stopPropagation()} className={`absolute w-[300px] ${showProfile ? 'right-10' : '-right-96'} top-[calc(100%+3px)] flex items-center justify-between bg-white p-3 shadow-[-2px_2px_10px_1px_rgba(0,0,0,0.1)] duration-300`}>
                 <button className='btn font-sora text-sm text-[#6B6B6B] px-5 py-3 border border-[#C4C4C4]'>Profile</button>
-                <button className='btn font-sora text-sm text-[#6B6B6B] px-5 py-3 border border-[#C4C4C4]'>Logout</button>
+                <button onClick={() => navigate('/')} className='btn font-sora text-sm text-[#6B6B6B] px-5 py-3 border border-[#C4C4C4]'>Logout</button>
             </div>
         </header>
     );

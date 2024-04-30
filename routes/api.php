@@ -3,9 +3,11 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CountryController;
+use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\DistrictController;
 use App\Http\Controllers\Api\DivisionController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\PurchaseOrderController;
 use App\Http\Controllers\Api\SubCategoryController;
 use App\Http\Controllers\Api\SubCategotyController;
 use App\Http\Controllers\Api\SupplierCategoryController;
@@ -92,24 +94,43 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/supplier-category/{supplierCategory}', [SupplierCategoryController::class, 'updateSupplierCategory']);
     Route::delete('/supplier-category/{supplierCategory}', [SupplierCategoryController::class, 'deleteSupplierCategory']);
 
-    
+
     /**
      * Country API
      */
 
-     Route::get('country', [CountryController::class, 'getAllCountry']);
-     Route::get('country/{country}', [CountryController::class, 'getCountry']);
-     Route::post('country', [CountryController::class, 'storeCountry']);
-     Route::put('country/{country}', [CountryController::class, 'updateCountry']);
-     Route::delete('country/{country}', [CountryController::class, 'deleteCountry']);
+    Route::get('country', [CountryController::class, 'getAllCountry']);
+    Route::get('country/{country}', [CountryController::class, 'getCountry']);
+    Route::post('country', [CountryController::class, 'storeCountry']);
+    Route::put('country/{country}', [CountryController::class, 'updateCountry']);
+    Route::delete('country/{country}', [CountryController::class, 'deleteCountry']);
 
-      /**
+    /**
      * Supplier API
      */
 
-     Route::get('supplier', [SupplierController::class, 'getAllSupplier']);
-     Route::get('supplier/{supplier}', [SupplierController::class, 'getSupplier']);
-     Route::post('supplier', [SupplierController::class, 'storeSupplier']);
-     Route::put('supplier/{supplier}', [SupplierController::class, 'updateSupplier']);
-     Route::delete('supplier/{supplier}', [SupplierController::class, 'deleteSupplier']);
+    Route::get('supplier', [SupplierController::class, 'getAllSupplier']);
+    Route::get('supplier/{supplier}', [SupplierController::class, 'getSupplier']);
+    Route::post('supplier', [SupplierController::class, 'storeSupplier']);
+    Route::put('supplier/{supplier}', [SupplierController::class, 'updateSupplier']);
+    Route::delete('supplier/{supplier}', [SupplierController::class, 'deleteSupplier']);
+
+    /**
+     * Purchase Order API
+     */
+
+    Route::get('purchase-order', [PurchaseOrderController::class, 'getAllPurchaseOrder']);
+    Route::get('purchase-order/{purchaseOrder}', [PurchaseOrderController::class, 'getPurchaseOrder']);
+    Route::post('purchase-order', [PurchaseOrderController::class, 'storePurchaseOrder']);
+    Route::put('purchase-order/{purchaseOrder}', [PurchaseOrderController::class, 'updatePurchaseOrder']);
+    Route::delete('purchase-order/{purchaseOrder}', [PurchaseOrderController::class, 'deletePurchaseOrder']);
+
+    /**
+     * Department Api
+     */
+    Route::get('/department', [DepartmentController::class, 'getAllDepartment']);
+    Route::get('/department/{category}', [DepartmentController::class, 'getDepartment']);
+    Route::post('/department', [DepartmentController::class, 'storeDepartment']);
+    Route::put('/department/{department}', [DepartmentController::class, 'updateDepartment']);
+    Route::delete('/department/{department}', [DepartmentController::class, 'deleteDepartment']);
 });

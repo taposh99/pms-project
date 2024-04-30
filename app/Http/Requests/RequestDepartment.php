@@ -8,7 +8,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\Rule;
 
-class RequestProduct extends FormRequest
+class RequestDepartment extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,25 +26,19 @@ class RequestProduct extends FormRequest
     public function rules(): array
     {
         return [
-
-            'category_id' => 'required',
-            'price' => 'required',
-            'name' => 'required',
-            'issue_date' => 'required',
-            'images' => 'nullable|mimes:jpg,jpeg,png,gif',
-            'product_code' => [
+            'name' => [
                 'required',
-                Rule::unique('products')->where(function ($query) {
-                    return $query->where('product_code', $this->product_code);
+                Rule::unique('departments')->where(function ($query) {
+                    return $query->where('name', $this->name);
                 }),
             ],
-
         ];
     }
+
     public function messages()
     {
         return [
-            'product_code.unique' => 'product code ' . $this->product_code . ' has already been taken.',
+            'name.unique' => 'This ' . $this->name . ' has already been taken.',
         ];
     }
 
