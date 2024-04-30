@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../../../Component/Header/Header';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLoginUserMutation } from '../../../redux/features/auth/authApi';
 import { useDispatch } from 'react-redux';
 import { setUserInfo } from '../../../redux/features/auth/authSlice';
@@ -10,8 +10,9 @@ import { setUserInfo } from '../../../redux/features/auth/authSlice';
 const SignIn = () => {
     const [userLogin, { isLoading, error, data }] = useLoginUserMutation();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const { handleSubmit, handleChange, handleBlur, errors, values, touched } = useFormik({
+    const { handleSubmit, handleChange, resetForm, errors, values, touched } = useFormik({
         initialValues: {
             email: '',
             password: '',
@@ -22,9 +23,12 @@ const SignIn = () => {
         }),
         onSubmit: async (values) => {
             const user = await userLogin(values).unwrap();
-            console.log(values);
             console.log(user);
-            dispatch(setUserInfo(user));
+            if (user && user.data[0]?.token) {
+                resetForm();
+                navigate('/dashboard');
+            }
+            user.data[0]?.token && dispatch(setUserInfo(user));
         },
 
 
