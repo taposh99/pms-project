@@ -16,7 +16,7 @@ class SupplierController extends Controller
     public function getAllSupplier(): JsonResponse
     {
         try {
-            $supplier = Supplier::with('supplierCategory', 'division', 'district')->orderBy('id', 'desc')->get();
+            $supplier = Supplier::with('supplierCategory', 'division', 'district','country')->orderBy('id', 'desc')->get();
         } catch (Exception $exception) {
             return sendErrorResponse('Something went wrong: ' . $exception->getMessage());
         }
@@ -26,7 +26,7 @@ class SupplierController extends Controller
     public function getSupplier($supplier): JsonResponse
     {
         try {
-            $supplier = Supplier::with('division', 'district')->findOrFail($supplier);
+            $supplier = Supplier::with('supplierCategory', 'division', 'district','country')->findOrFail($supplier);
             return sendSuccessResponse('Supplier Found Successfully!!', '200', $supplier);
         } catch (Exception $exception) {
             return sendErrorResponse('Something went wrong: ' . $exception->getMessage());
