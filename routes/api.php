@@ -139,7 +139,7 @@ Route::middleware('auth:sanctum')->group(function () {
      * PO Receipts Api
      */
     Route::get('po-receipt', [PoReceiptController::class, 'getAllPoReceipt']);
-    Route::get('po-receipt/{/poReceipt}', [PoReceiptController::class, 'getPoReceipt']);
+    Route::get('po-receipt/{poReceipt}', [PoReceiptController::class, 'getPoReceipt']);
     Route::post('po-receipt', [PoReceiptController::class, 'storePoReceipt']);
     Route::put('po-receipt/{poReceipt}', [PoReceiptController::class, 'updatePoReceipt']);
     Route::delete('po-receipt/{poReceipt}', [PoReceiptController::class, 'deletePoReceipt']);
