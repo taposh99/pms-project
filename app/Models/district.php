@@ -27,4 +27,8 @@ class district extends Model
     {
         return $this->hasMany(Supplier::class);
     }
+    public function poReceipt(): HasMany
+    {
+        return $this->hasMany(PoReceipt::class);
+    }
 }
