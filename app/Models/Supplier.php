@@ -16,6 +16,10 @@ class Supplier extends Model
     {
         return $this->belongsTo(SupplierCategory::class);
     }
+    public function country(): BelongsTo
+    {
+        return $this->belongsTo(Country::class);
+    }
     public function division(): BelongsTo
     {
         return $this->belongsTo(Division::class);
@@ -29,6 +33,10 @@ class Supplier extends Model
     public function purchaseOrder(): HasMany
     {
         return $this->hasMany(PurchaseOrder::class);
+    }
+    public function poReceipt(): HasMany
+    {
+        return $this->hasMany(PoReceipt::class);
     }
     
 
