@@ -23,13 +23,14 @@ const DashboardHeader = () => {
     }, [showProfile])
 
     return (
-        <header className='relative overflow-x-clip bg-white border-b-[1px] border-[#E9E9E9] px-10 py-2 flex items-center justify-between'>
-            <div className='relative'>
+        <header className='relative overflow-x-clip bg-white border-b-[1px] border-[#E9E9E9] px-2 lg:px-10 py-2 flex items-center justify-end lg:justify-between'>
+            <div className='relative hidden lg:block'>
                 <input
                     type="search"
                     name="search"
                     id="search"
-                    className='border-[1px] border-[#E6E6E6] pl-9 pr-2 py-2 w-[265px] rounded-xl focus:outline-none'
+                    placeholder='Search any...'
+                    className='border-[1px] border-[#E6E6E6] pl-9 pr-2 py-2 w-[265px] rounded-xl focus:outline-none placeholder:text-[#6B6B6B]'
                 />
                 <button className='btn absolute top-1/2 -translate-y-1/2 left-2'>
                     <FiSearch className='text-[#6B6B6B] text-2xl' />
@@ -61,15 +62,15 @@ const DashboardHeader = () => {
                     <div className='w-12 h-12 rounded-full overflow-hidden'>
                         <img src="/user.jpg" alt="" />
                     </div>
-                    <div className=''>
+                    <div className='hidden lg:block'>
                         <h1 className='font-sora font-semibold text-lg'>Jack Bakley Rion</h1>
                         <h6 className='font-sora text-[#6B6B6B] text-sm'>Procurement Manager</h6>
                     </div>
                 </button>
             </div>
-            <div onClick={(e) => e.stopPropagation()} className={`absolute w-[300px] ${showProfile ? 'right-10' : '-right-96'} top-[calc(100%+3px)] flex items-center justify-between bg-white p-3 shadow-[-2px_2px_10px_1px_rgba(0,0,0,0.1)] duration-300`}>
-                <button className='btn font-sora text-sm text-[#6B6B6B] px-5 py-3 border border-[#C4C4C4]'>Profile</button>
-                <button onClick={() => navigate('/')} className='btn font-sora text-sm text-[#6B6B6B] px-5 py-3 border border-[#C4C4C4]'>Logout</button>
+            <div onClick={(e) => e.stopPropagation()} className={`absolute lg:w-[280px] ${showProfile ? 'right-2 lg:right-10' : '-right-96'} top-[calc(100%+3px)] flex items-center justify-between gap-5 bg-white p-1 lg:p-3 shadow-[-2px_2px_10px_1px_rgba(0,0,0,0.1)] duration-300`}>
+                <button className='btn font-sora text-sm text-[#6B6B6B] px-2 lg:px-5 py-1 lg:py-3 border border-[#C4C4C4]'>Profile</button>
+                <button onClick={() => navigate('/')} className='btn font-sora text-sm text-[#6B6B6B] px-2 lg:px-5 py-1 lg:py-3 border border-[#C4C4C4]'>Logout</button>
             </div>
         </header>
     );
