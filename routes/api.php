@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\DistrictController;
 use App\Http\Controllers\Api\DivisionController;
+use App\Http\Controllers\Api\PoReceiptController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\PurchaseOrderController;
 use App\Http\Controllers\Api\SubCategoryController;
@@ -40,20 +41,20 @@ Route::middleware('auth:sanctum')->group(function () {
     /**
      * Category Api
      */
-    Route::get('/category', [CategoryController::class, 'getAllCategory']);
-    Route::get('/category/{category}', [CategoryController::class, 'getCategory']);
-    Route::post('/category', [CategoryController::class, 'storeCategory']);
-    Route::put('/category/{category}', [CategoryController::class, 'updateCategory']);
-    Route::delete('/category/{category}', [CategoryController::class, 'deleteCategory']);
+    Route::get('category', [CategoryController::class, 'getAllCategory']);
+    Route::get('category/{category}', [CategoryController::class, 'getCategory']);
+    Route::post('category', [CategoryController::class, 'storeCategory']);
+    Route::put('category/{category}', [CategoryController::class, 'updateCategory']);
+    Route::delete('category/{category}', [CategoryController::class, 'deleteCategory']);
 
     /**
      * SubCategory API
      */
-    Route::get('/subcategory', [SubCategoryController::class, 'getAllSubCategory']);
-    Route::get('/subcategory/{subCategory}', [SubCategoryController::class, 'getSubCategory']);
-    Route::post('/subcategory', [SubCategoryController::class, 'storeSubCategory']);
-    Route::put('/subcategory/{subCategory}', [SubCategoryController::class, 'updateSubCategory']);
-    Route::delete('/subcategory/{subCategory}', [SubCategoryController::class, 'deleteSubCategory']);
+    Route::get('subcategory', [SubCategoryController::class, 'getAllSubCategory']);
+    Route::get('subcategory/{subCategory}', [SubCategoryController::class, 'getSubCategory']);
+    Route::post('subcategory', [SubCategoryController::class, 'storeSubCategory']);
+    Route::put('subcategory/{subCategory}', [SubCategoryController::class, 'updateSubCategory']);
+    Route::delete('subcategory/{subCategory}', [SubCategoryController::class, 'deleteSubCategory']);
 
     /**
      * Divison API
@@ -88,11 +89,11 @@ Route::middleware('auth:sanctum')->group(function () {
      * Supplier Category API
      */
 
-    Route::get('/supplier-category', [SupplierCategoryController::class, 'getAllSupplierCategory']);
-    Route::get('/supplier-category/{supplierCategory}', [SupplierCategoryController::class, 'getSupplierCategory']);
-    Route::post('/supplier-category', [SupplierCategoryController::class, 'storeSupplierCategory']);
-    Route::put('/supplier-category/{supplierCategory}', [SupplierCategoryController::class, 'updateSupplierCategory']);
-    Route::delete('/supplier-category/{supplierCategory}', [SupplierCategoryController::class, 'deleteSupplierCategory']);
+    Route::get('supplier-category', [SupplierCategoryController::class, 'getAllSupplierCategory']);
+    Route::get('supplier-category/{supplierCategory}', [SupplierCategoryController::class, 'getSupplierCategory']);
+    Route::post('supplier-category', [SupplierCategoryController::class, 'storeSupplierCategory']);
+    Route::put('supplier-category/{supplierCategory}', [SupplierCategoryController::class, 'updateSupplierCategory']);
+    Route::delete('supplier-category/{supplierCategory}', [SupplierCategoryController::class, 'deleteSupplierCategory']);
 
 
     /**
@@ -128,9 +129,18 @@ Route::middleware('auth:sanctum')->group(function () {
     /**
      * Department Api
      */
-    Route::get('/department', [DepartmentController::class, 'getAllDepartment']);
-    Route::get('/department/{category}', [DepartmentController::class, 'getDepartment']);
-    Route::post('/department', [DepartmentController::class, 'storeDepartment']);
-    Route::put('/department/{department}', [DepartmentController::class, 'updateDepartment']);
-    Route::delete('/department/{department}', [DepartmentController::class, 'deleteDepartment']);
+    Route::get('department', [DepartmentController::class, 'getAllDepartment']);
+    Route::get('department/{category}', [DepartmentController::class, 'getDepartment']);
+    Route::post('department', [DepartmentController::class, 'storeDepartment']);
+    Route::put('department/{department}', [DepartmentController::class, 'updateDepartment']);
+    Route::delete('department/{department}', [DepartmentController::class, 'deleteDepartment']);
+
+    /**
+     * PO Receipts Api
+     */
+    Route::get('po-receipt', [PoReceiptController::class, 'getAllPoReceipt']);
+    Route::get('po-receipt/{poReceipt}', [PoReceiptController::class, 'getPoReceipt']);
+    Route::post('po-receipt', [PoReceiptController::class, 'storePoReceipt']);
+    Route::put('po-receipt/{poReceipt}', [PoReceiptController::class, 'updatePoReceipt']);
+    Route::delete('po-receipt/{poReceipt}', [PoReceiptController::class, 'deletePoReceipt']);
 });
