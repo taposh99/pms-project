@@ -55,9 +55,9 @@ const DashboardSidebar = () => {
     ]
 
     return (
-        <div className='border-r border-[#E9E9E9] min-h-screen'>
-            <div className='bg-white px-10 py-2'>
-                <Link to='/dashboard' className='font-sora font-bold text-[30px]'>E-Procure</Link>
+        <div className='border-r border-[#E9E9E9] min-h-screen py-5'>
+            <div className='bg-white text-center px-2'>
+                <Link to='/dashboard' className='font-sora font-bold text-xs lg:text-[30px] whitespace-nowrap'>E-Procure</Link>
             </div>
             <nav className='mt-8'>
                 <ul className='font-sora text- text-[#6B6B6B] space-y-3'>
@@ -65,12 +65,12 @@ const DashboardSidebar = () => {
                         menuItem.map(({ label, link, linkEnd, icon }) => (
                             <li>
                                 <NavLink end={linkEnd} to={link} className={({ isActive }) => `
-                            ${isActive ? 'bg-[#E4F2FF] border-[#047CEB] text-[#047CEB]' : 'border-transparent'}
-                            flex px-10 items-center gap-2 py-2 border-l-[5px]`
+                                    ${isActive ? 'bg-[#E4F2FF] border-[#047CEB] text-[#047CEB]' : 'border-transparent'}
+                                    flex px-7 lg:px-10 items-center gap-2 py-2 border-l-[5px]`
                                 }
                                 >
                                     {icon}
-                                    {label}
+                                    <span className='hidden lg:block'>{label}</span>
                                 </NavLink>
                             </li>
                         ))
