@@ -15,7 +15,33 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashboardLayout />
+        element: <DashboardLayout />,
+        children: [
+            {
+                path: "products",
+                element: <h1>Hello products</h1>
+            },
+            {
+                path: "purchase-order",
+                element: <h1>Hello order</h1>
+            },
+            {
+                path: "po-receipts",
+                element: <h1>Hello receipts</h1>
+            },
+            {
+                path: "suppliers",
+                element: <h1>Hello suppliers</h1>
+            },
+            {
+                path: "Warehouse",
+                element: <h1>Hello warehouse</h1>
+            },
+            {
+                path: "delivery",
+                element: <h1>Hello delivery</h1>
+            }
+        ]
     }
 ]);
 
