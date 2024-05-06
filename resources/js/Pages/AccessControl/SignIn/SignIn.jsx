@@ -41,8 +41,8 @@ const SignIn = () => {
     return (
         <>
             <Header></Header>
-            <div className='font-sora bg-[#FAFAFA] flex justify-center min-h-screen py-16'>
-                <form onSubmit={handleSubmit} className='bg-white shadow-[-2px_2px_15px_1px_rgba(0,0,0,0.2)] w-2/5 px-5 py-8'>
+            <div className='font-sora bg-[#FAFAFA] flex justify-center min-h-screen px-2 lg:px-0 py-16'>
+                <form onSubmit={handleSubmit} className='bg-white shadow-[-2px_2px_15px_1px_rgba(0,0,0,0.2)] lg:w-2/5 px-5 py-8 rounded'>
                     <p className='text-[26px] mb-10'>Log In</p>
                     <label htmlFor="email" className='text-sm block mb-2'>Email Address</label>
                     <input
@@ -72,9 +72,9 @@ const SignIn = () => {
 
                     <button type="submit" className='relative bg-[#047CEB] text-white w-full py-3 rounded-md mt-8 mb-7 active:scale-95 duration-300'>
                         {demoLoading &&
-                            <span className="absolute left-48 w-6 h-6 animate-[spin_1s_linear_infinite] rounded-full border-4 border-r-white border-sky-400"></span>
+                            <span className="absolute left-44 w-6 h-6 animate-[spin_1s_linear_infinite] rounded-full border-4 border-r-white border-sky-400"></span>
                         }
-                        Submit
+                        {demoLoading ? 'Submitting' : 'Submit'}
                     </button>
                     <Link className='block text-sm text-center underline mb-16'>Forgotten Password?</Link>
                 </form>

@@ -23,7 +23,7 @@ const DashboardHeader = () => {
     }, [showProfile])
 
     return (
-        <header className='relative overflow-x-clip bg-white border-b-[1px] border-[#E9E9E9] px-2 lg:px-10 py-2 flex items-center justify-end lg:justify-between'>
+        <header className='relative overflow-x-clip bg-white border-b-[1px] border-[#E9E9E9] px-2 lg:px-10 lg:pr-5 py-2 flex items-center justify-end lg:justify-between'>
             <div className='relative hidden lg:block'>
                 <input
                     type="search"

@@ -27,10 +27,10 @@ const SummeryAnalytics = () => {
     ];
 
     return (
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 items-center gap-4 lg:gap-8 mt-6 font-sora text-white'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-center gap-3 lg:gap-8 mt-6 font-sora text-white'>
             {
                 data.map((item, index) => (
-                    <div key={index} className={`rounded-xl p-5 h-full bg-${index === 0 ? '[#6146E0]' : index === 1 ? '[#F76767]' : index === 2 ? '[#0FBE97]' : index === 3 ? '[#0FBE97]' : index === 4 ? '[#030776]' : ''}`}>
+                    <div key={index} className={`rounded-xl p-5 h-full ${index === 0 ? 'bg-[#6146E0]' : index === 1 ? 'bg-[#F76767]' : index === 2 ? 'bg-[#0FBE97]' : index === 3 ? 'bg-[#0FBE97]' : index === 4 ? 'bg-[#030776]' : ''}`}>
                         <div className='flex flex-col lg:flex-row lg:items-center gap-2'>
                             {
                                 index === 0 ?
