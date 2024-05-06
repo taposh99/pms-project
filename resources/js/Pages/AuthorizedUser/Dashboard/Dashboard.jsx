@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaPlus } from "react-icons/fa6";
 import SummeryAnalytics from './SummeryAnalytics';
+import ActivitySummery from './DashboardGraph/ActivitySummery';
 
 const Dashboard = () => {
     return (
@@ -13,6 +14,9 @@ const Dashboard = () => {
                 </button>
             </div>
             <SummeryAnalytics />
+            <div className='my-6'>
+                <ActivitySummery />
+            </div>
         </main>
     );
 };
