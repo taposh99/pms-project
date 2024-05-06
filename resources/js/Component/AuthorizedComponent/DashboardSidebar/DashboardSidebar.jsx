@@ -63,14 +63,14 @@ const DashboardSidebar = () => {
                 <ul className='font-sora text- text-[#6B6B6B] space-y-3'>
                     {
                         menuItem.map(({ label, link, linkEnd, icon }) => (
-                            <li>
+                            <li key={label}>
                                 <NavLink end={linkEnd} to={link} className={({ isActive }) => `
                                     ${isActive ? 'bg-[#E4F2FF] border-[#047CEB] text-[#047CEB]' : 'border-transparent'}
                                     flex px-7 lg:px-10 items-center gap-2 py-2 border-l-[5px]`
                                 }
                                 >
                                     {icon}
-                                    <span className='hidden lg:block'>{label}</span>
+                                    <span className='hidden lg:block whitespace-nowrap'>{label}</span>
                                 </NavLink>
                             </li>
                         ))
