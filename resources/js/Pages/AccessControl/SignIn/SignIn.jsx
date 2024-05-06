@@ -72,9 +72,9 @@ const SignIn = () => {
 
                     <button type="submit" className='relative bg-[#047CEB] text-white w-full py-3 rounded-md mt-8 mb-7 active:scale-95 duration-300'>
                         {demoLoading &&
-                            <span className="absolute left-48 w-6 h-6 animate-[spin_1s_linear_infinite] rounded-full border-4 border-r-white border-sky-400"></span>
+                            <span className="absolute left-44 w-6 h-6 animate-[spin_1s_linear_infinite] rounded-full border-4 border-r-white border-sky-400"></span>
                         }
-                        Submit
+                        {demoLoading ? 'Submitting' : 'Submit'}
                     </button>
                     <Link className='block text-sm text-center underline mb-16'>Forgotten Password?</Link>
                 </form>
