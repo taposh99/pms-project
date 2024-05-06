@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\SubCategoryController;
 use App\Http\Controllers\Api\SubCategotyController;
 use App\Http\Controllers\Api\SupplierCategoryController;
 use App\Http\Controllers\Api\SupplierController;
+use App\Http\Controllers\Api\WarehouseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -143,4 +144,15 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('po-receipt', [PoReceiptController::class, 'storePoReceipt']);
     Route::put('po-receipt/{poReceipt}', [PoReceiptController::class, 'updatePoReceipt']);
     Route::delete('po-receipt/{poReceipt}', [PoReceiptController::class, 'deletePoReceipt']);
+
+
+    /**
+     * Warehouse API
+     */
+
+    Route::get('warehouse', [WarehouseController::class, 'getAllWarehouse']);
+    Route::get('warehouse/{warehouse}', [WarehouseController::class, 'getWarehouse']);
+    Route::post('warehouse', [WarehouseController::class, 'storeWarehouse']);
+    Route::put('warehouse/{warehouse}', [WarehouseController::class, 'updateWarehouse']);
+    Route::delete('warehouse/{warehouse}', [WarehouseController::class, 'deleteWarehouse']);
 });

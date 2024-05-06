@@ -19,4 +19,8 @@ class Country extends Model
     {
         return $this->hasMany(Supplier::class);
     }
+    public function warehouse(): HasMany
+    {
+        return $this->hasMany(Warehouse::class);
+    }
 }
