@@ -70,7 +70,7 @@ const DashboardSidebar = () => {
                                 }
                                 >
                                     {icon}
-                                    <span className='hidden lg:block'>{label}</span>
+                                    <span className='hidden lg:block whitespace-nowrap'>{label}</span>
                                 </NavLink>
                             </li>
                         ))
