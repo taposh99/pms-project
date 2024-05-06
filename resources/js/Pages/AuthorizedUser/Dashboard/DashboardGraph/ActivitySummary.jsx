@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import ReactApexChart from "react-apexcharts";
+import './graph.css';
 
 const ActivitySummary = () => {
     const [chartProps, setChartProps] = useState({
         series: [{
             name: "Purchase Order",
-            data: [1045, 7452, 2038, 10024, 2533, 8026, 1821]
+            data: [1045, 2452, 2038, 5024, 2533, 8026, 1821]
         },
         {
             name: "PO Receipts",
-            data: [2435, 2441, 9962, 4242, 2313, 4618, 5529]
+            data: [2435, 441, 1962, 242, 7313, 4618, 1529]
         }
         ],
         options: {
@@ -42,6 +43,10 @@ const ActivitySummary = () => {
                 categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
             },
             tooltip: {
+                theme: 'dark',
+                style: {
+                    fontSize: '14px',
+                },
                 y: [
                     {
                         title: {
