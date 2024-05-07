@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\DistrictController;
 use App\Http\Controllers\Api\DivisionController;
 use App\Http\Controllers\Api\PoReceiptController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\ProductTypeController;
 use App\Http\Controllers\Api\PurchaseOrderController;
 use App\Http\Controllers\Api\SubCategoryController;
 use App\Http\Controllers\Api\SubCategotyController;
@@ -155,4 +156,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('warehouse', [WarehouseController::class, 'storeWarehouse']);
     Route::put('warehouse/{warehouse}', [WarehouseController::class, 'updateWarehouse']);
     Route::delete('warehouse/{warehouse}', [WarehouseController::class, 'deleteWarehouse']);
+
+     /**
+     * Product Type Api
+     */
+    Route::get('product-type', [ProductTypeController::class, 'getAllProductType']);
+    Route::get('product-type/{productType}', [ProductTypeController::class, 'getProductType']);
+    Route::post('product-type', [ProductTypeController::class, 'storeProductType']);
+    Route::put('product-type/{productType}', [ProductTypeController::class, 'updateProductType']);
+    Route::delete('product-type/{productType}', [ProductTypeController::class, 'deleteProductType']);
 });
