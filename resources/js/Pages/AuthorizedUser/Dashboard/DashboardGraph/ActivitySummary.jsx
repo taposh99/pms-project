@@ -75,7 +75,7 @@ const ActivitySummary = () => {
                     const customLabels = ['25 April', '30 April', '3 May', '14 May', '5 Jun', '26 Jun', '7 July'];
                     const demoPercentage = [2, 12, 34, 76, 23, 56, 32];
                     const tooltipContent = `
-                      <div class='p-2 pr-5 pb-0 pt-0'>
+                      <div class='!bg-black !rounded-t-[15%] !rounded-b-xl p-6 pr-10 pb-8'>
                         <p class='text-[#929292] mb-4'>${customLabels[dataPointIndex]}</p>
                         <div class='flex items-center gap-2'>
                             <div class='w-3 h-3 rounded-full bg-[#2D2FF0]'></div>
