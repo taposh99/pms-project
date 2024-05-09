@@ -4,3 +4,8 @@
     border-radius: 20% 20% 10% 10% !important;
     padding: 20px 10px 40px 10px;
 }
+
+.apexcharts-tooltip-title {
+    color: #929292;
+    font-weight: 600;
+}
