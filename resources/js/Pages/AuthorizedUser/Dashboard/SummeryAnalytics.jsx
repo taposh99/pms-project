@@ -44,8 +44,8 @@ const SummeryAnalytics = () => {
                                         </svg>
                                         : index === 2 ?
                                             <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M14.7143 1H3.28571C2.02335 1 1 2.02335 1 3.28571V18.1429C1 19.4052 2.02335 20.4286 3.28571 20.4286H14.7143C15.9767 20.4286 17 19.4052 17 18.1429V3.28571C17 2.02335 15.9767 1 14.7143 1Z" stroke="white" stroke-width="1.5" />
-                                                <path d="M5.57153 6.7143H12.4287M5.57153 11.2857H12.4287M5.57153 15.8572H10.143" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+                                                <path d="M14.7143 1H3.28571C2.02335 1 1 2.02335 1 3.28571V18.1429C1 19.4052 2.02335 20.4286 3.28571 20.4286H14.7143C15.9767 20.4286 17 19.4052 17 18.1429V3.28571C17 2.02335 15.9767 1 14.7143 1Z" stroke="white" strokeWidth="1.5" />
+                                                <path d="M5.57153 6.7143H12.4287M5.57153 11.2857H12.4287M5.57153 15.8572H10.143" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
                                             </svg>
                                             : index === 3 ?
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

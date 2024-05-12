@@ -2,6 +2,7 @@ import React from 'react';
 import { FaPlus } from "react-icons/fa6";
 import SummeryAnalytics from './SummeryAnalytics';
 import ActivitySummary from './DashboardGraph/ActivitySummary';
+import BudgetAnalysis from './DashboardGraph/BudgetAnalysis';
 
 const Dashboard = () => {
     return (
@@ -18,7 +19,9 @@ const Dashboard = () => {
                 <div className='col-span-2'>
                     <ActivitySummary />
                 </div>
-                <div>dsfdfsdfdsfdf</div>
+                <div>
+                    <BudgetAnalysis />
+                </div>
             </div>
         </main>
     );
