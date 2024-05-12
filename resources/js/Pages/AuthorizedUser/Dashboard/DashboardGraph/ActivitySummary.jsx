@@ -71,7 +71,7 @@ const ActivitySummary = () => {
                 //         return customLabels[val - 1];
                 //     },
                 // },
-                custom: function ({ series, seriesIndex, dataPointIndex }) {
+                custom: function ({ dataPointIndex }) {
                     const customLabels = ['25 April', '30 April', '3 May', '14 May', '5 Jun', '26 Jun', '7 July'];
                     const demoPercentage = [2, 12, 34, 76, 23, 56, 32];
                     const tooltipContent = `
@@ -101,7 +101,7 @@ const ActivitySummary = () => {
 
     return (
         <div>
-            <div id="chart">
+            <div id="chart" className='shadow-[2px_2px_15px_2px_rgba(0,0,0,0.1)] rounded-lg px-4 py-6'>
                 <ReactApexChart options={chartProps.options} series={chartProps.series} type="line" height={350} />
             </div>
             <div id="html-dist"></div>
