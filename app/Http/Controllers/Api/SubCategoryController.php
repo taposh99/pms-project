@@ -14,7 +14,7 @@ class SubCategoryController extends Controller
     public function getAllSubCategory(): JsonResponse
     {
         try {
-            $subcategory = SubCategory::orderBy('id', 'desc')->get();
+            $subcategory = SubCategory::with('category')->orderBy('id', 'desc')->get();
         } catch (Exception $exception) {
             return sendErrorResponse('Something went wrong: ' . $exception->getMessage());
         }
@@ -26,7 +26,7 @@ class SubCategoryController extends Controller
     public function getSubCategory($subCategory): JsonResponse
     {
         try {
-            $subCategory = SubCategory::findOrFail($subCategory);
+            $subCategory = SubCategory::with('category')->findOrFail($subCategory);
             return sendSuccessResponse('Sub Category Found Successfully!!', '200', $subCategory);
         } catch (Exception $exception) {
 
@@ -41,6 +41,7 @@ class SubCategoryController extends Controller
 
         try {
             SubCategory::create([
+                'category_id' => $request->category_id,
                 'name' => $request->name,
             ]);
         } catch (Exception $exception) {
@@ -53,6 +54,7 @@ class SubCategoryController extends Controller
     {
         try {
             $subCategory->update([
+                'category_id' => $request->category_id,
                 'name' => $request->name,
             ]);
         } catch (Exception $exception) {
