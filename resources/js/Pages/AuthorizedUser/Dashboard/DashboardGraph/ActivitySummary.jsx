@@ -21,6 +21,9 @@ const ActivitySummary = () => {
                     enabled: false
                 },
             },
+            grid: {
+                show: false
+            },
             stroke: {
                 width: [4, 4],
                 curve: 'smooth',
