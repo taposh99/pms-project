@@ -3,6 +3,7 @@ import { FaPlus } from "react-icons/fa6";
 import SummeryAnalytics from './SummeryAnalytics';
 import ActivitySummary from './DashboardGraph/ActivitySummary';
 import BudgetAnalysis from './DashboardGraph/BudgetAnalysis';
+import POReceipt from './DashboardGraph/POReceipt';
 
 const Dashboard = () => {
     return (
@@ -21,6 +22,14 @@ const Dashboard = () => {
                 </div>
                 <div>
                     <BudgetAnalysis />
+                </div>
+            </div>
+            <div className='my-6 grid lg:grid-cols-2 gap-5'>
+                <div>
+                    <POReceipt />
+                </div>
+                <div>
+                    {/* <BudgetAnalysis /> */}
                 </div>
             </div>
         </main>
