@@ -51,9 +51,9 @@ const POReceipt = () => {
     })
 
     return (
-        <div>
-            <div id="chart" className='shadow-[2px_2px_15px_2px_rgba(0,0,0,0.1)] rounded-lg px-4 py-6'>
-                <ReactApexChart options={chartProps.options} series={chartProps.series} type="bar" height={350} />
+        <div className='h-full'>
+            <div id="chart" className='shadow-[2px_2px_15px_2px_rgba(0,0,0,0.1)] rounded-lg px-4 py-6 h-full'>
+                <ReactApexChart options={chartProps.options} series={chartProps.series} type="bar" height={250} />
             </div>
             <div id="html-dist"></div>
         </div>

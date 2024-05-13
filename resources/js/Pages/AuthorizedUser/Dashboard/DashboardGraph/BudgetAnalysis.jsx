@@ -66,7 +66,7 @@ const BudgetAnalysis = () => {
     return (
         <div className='!h-full'>
             <div id="chart" className='shadow-[2px_2px_15px_2px_rgba(0,0,0,0.1)] rounded-lg py-6 !h-full'>
-                <p className='px-4 font-semibold font-sora text-sm mb-10'>Budget Analysis</p>
+                <p className='px-4 font-extrabold font-sora text-[#373d3f] text-sm mb-10'>Budget Analysis</p>
                 <ReactApexChart options={chartProps.options} series={chartProps.series} type="donut" />
             </div>
             <div id="html-dist"></div>

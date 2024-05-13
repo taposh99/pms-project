@@ -4,6 +4,7 @@ import SummeryAnalytics from './SummeryAnalytics';
 import ActivitySummary from './DashboardGraph/ActivitySummary';
 import BudgetAnalysis from './DashboardGraph/BudgetAnalysis';
 import POReceipt from './DashboardGraph/POReceipt';
+import ProductOverview from './ProductOverview';
 
 const Dashboard = () => {
     return (
@@ -29,7 +30,7 @@ const Dashboard = () => {
                     <POReceipt />
                 </div>
                 <div>
-                    {/* <BudgetAnalysis /> */}
+                    <ProductOverview />
                 </div>
             </div>
         </main>
