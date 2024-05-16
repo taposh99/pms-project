@@ -3,15 +3,18 @@ import Header from '../../../Component/Header/Header';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
-import { useLoginUserMutation } from '../../../redux/features/auth/authApi';
+// import { useLoginUserMutation } from '../../../redux/features/auth/authApi';
 import { useDispatch } from 'react-redux';
-import { setUserInfo } from '../../../redux/features/auth/authSlice';
+import login from '../../../redux/features/auth/authApi';
+// import { setUserInfo } from '../../../redux/features/auth/authSlice';
+// import axios from 'axios';
 
 const SignIn = () => {
-    const [userLogin, { isLoading, error, data }] = useLoginUserMutation();
+    // const [userLogin, { isLoading, error, data }] = useLoginUserMutation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [demoLoading, setDemoLoading] = useState(false);
+    const [userData, setUserData] = useState()
 
     const { handleSubmit, handleChange, resetForm, errors, values, touched } = useFormik({
         initialValues: {
@@ -24,15 +27,27 @@ const SignIn = () => {
         }),
         onSubmit: async (values) => {
             setDemoLoading(true);
-            const user = await userLogin(values).unwrap();
-            console.log(user);
-            if (user && user.data[0]?.token) {
-                resetForm();
-                setDemoLoading(false);
-                navigate('/dashboard');
-            }
-            setDemoLoading(false);
-            user.data[0]?.token && dispatch(setUserInfo(user));
+            // const user = await userLogin(values).unwrap();
+            // console.log(user);
+            // if (user && user.data[0]?.token) {
+            //     resetForm();
+            //     setDemoLoading(false);
+            //     navigate('/dashboard');
+            // }
+            // setDemoLoading(false);
+            // user.data[0]?.token && dispatch(setUserInfo(user));
+
+            // const response = await axios.post('http://127.0.0.1:8000/api/login', values, { withCredentials: true });
+            // console.log(response.data.data[0].token);
+            // if (response.data?.data[0]?.token) {
+            //     resetForm();
+            //     setDemoLoading(false);
+            //     navigate('/dashboard');
+            // }
+            // setDemoLoading(false);
+
+            console.log(values);
+            dispatch(login(values));
         },
 
 
