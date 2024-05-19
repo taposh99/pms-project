@@ -5,6 +5,8 @@ const initialState = {
     token: null,
     loading: false,
     error: null,
+    success: null,
+    message: null,
 };
 
 const authSlice = createSlice({
@@ -12,18 +14,28 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         loginStart: (state) => {
+            state.user = null;
+            state.token = null;
             state.loading = true;
             state.error = null;
+            state.success = null;
+            state.message = null;
         },
         loginSuccess: (state, action) => {
-            state.loading = false;
             state.user = action.payload.data[1]?.user;
             state.token = action.payload.data[0]?.token;
+            state.loading = false;
             state.error = null;
+            state.success = action.payload.success;
+            state.message = action.payload.message;
         },
         loginFailure: (state, action) => {
+            state.user = null;
+            state.token = null;
             state.loading = false;
-            state.error = action.payload;
+            state.error = true;
+            state.success = action.payload.success;
+            state.message = action.payload.message;
         },
         logout: (state) => {
             state.user = null;

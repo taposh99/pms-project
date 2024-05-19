@@ -1,6 +1,5 @@
 import axiosSecure from "../../../hooks/useAxiosSecure";
 import { loginFailure, loginStart, loginSuccess } from "./authSlice";
-import axios from "axios";
 
 const login = (values) => async (dispatch) => {
     dispatch(loginStart());
