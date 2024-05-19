@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../../Component/Header/Header';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -23,9 +23,13 @@ const SignIn = () => {
         onSubmit: async (values) => {
             dispatch(login(values));
         },
-
-
     });
+
+    useEffect(() => {
+        if (success && user) {
+            navigate('/dashboard');
+        }
+    }, [success])
 
     return (
         <>
