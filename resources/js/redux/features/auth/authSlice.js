@@ -40,6 +40,10 @@ const authSlice = createSlice({
         logout: (state) => {
             state.user = null;
             state.token = null;
+            state.loading = false;
+            state.error = null;
+            state.success = action.payload.success;
+            state.message = action.payload.message;
         },
     },
 });
