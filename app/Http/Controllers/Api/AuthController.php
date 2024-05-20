@@ -19,7 +19,20 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
 
-
+    public function checkAuth(): JsonResponse
+    {
+        try {
+            $user = '';
+            if (auth()->check()) {
+                $user = User::with('roles:user_id,name')->where('id', auth()->user()->id)->first();
+                return sendSuccessResponse('User Authenticate', 200, $user);
+            } else {
+                return sendErrorResponse('User Unauthenticated', 404);
+            }
+        } catch (Exception $exception) {
+            return sendErrorResponse('Something went wrong : ' . $exception->getMessage(), 404);
+        }
+    }
     public function register(RequestRegister $request): JsonResponse
     {
         try {
