@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import login from "./authApi";
 
 const initialState = {
     user: null,
@@ -12,43 +13,34 @@ const initialState = {
 const authSlice = createSlice({
     name: "auth",
     initialState,
-    reducers: {
-        loginStart: (state) => {
-            state.user = null;
-            state.token = null;
-            state.loading = true;
-            state.error = null;
-            state.success = null;
-            state.message = null;
-        },
-        loginSuccess: (state, action) => {
-            state.user = action.payload.data[1]?.user;
-            state.token = action.payload.data[0]?.token;
-            state.loading = false;
-            state.error = null;
-            state.success = action.payload.success;
-            state.message = action.payload.message;
-        },
-        loginFailure: (state, action) => {
-            state.user = null;
-            state.token = null;
-            state.loading = false;
-            state.error = true;
-            state.success = action.payload.success;
-            state.message = action.payload.message;
-        },
-        logout: (state) => {
-            state.user = null;
-            state.token = null;
-            state.loading = false;
-            state.error = null;
-            state.success = action.payload.success;
-            state.message = action.payload.message;
-        },
+    extraReducers: (builder) => {
+        builder
+            .addCase(login.pending, (state) => {
+                state.user = null;
+                state.token = null;
+                state.loading = true;
+                state.error = null;
+                state.success = null;
+                state.message = null;
+            })
+            .addCase(login.fulfilled, (state, action) => {
+                state.user = action.payload.data[1]?.user;
+                state.token = action.payload.data[0]?.token;
+                state.loading = false;
+                state.error = null;
+                state.success = action.payload.success;
+                state.message = action.payload.message;
+            })
+            .addCase(login.rejected, (state, action) => {
+                state.user = null;
+                state.token = null;
+                state.loading = false;
+                state.error = true;
+                state.success = action.payload.success;
+                state.message = action.payload.message;
+            });
     },
 });
 
-export const { loginStart, loginSuccess, loginFailure, logout } =
-    authSlice.actions;
-
 export const authReducer = authSlice.reducer;
+export default authSlice.reducer;
