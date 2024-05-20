@@ -6,6 +6,8 @@ const AuthorizedRoute = ({ children }) => {
     const { token, user } = useSelector((state) => state.auth);
     const navigate = useNavigate();
 
+    console.log(token);
+
     useEffect(() => {
         if (!token & !user) {
             navigate("/");
