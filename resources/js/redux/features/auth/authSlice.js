@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import login from "./authApi";
+import Cookies from "js-cookie";
+import checkAuth from "./checkAuth";
 
 const initialState = {
     user: null,
-    token: null,
+    token: Cookies.get("authToken") || null,
     loading: false,
     error: null,
     success: null,
@@ -38,6 +40,21 @@ const authSlice = createSlice({
                 state.error = true;
                 state.success = action.payload.success;
                 state.message = action.payload.message;
+            })
+            .addCase(checkAuth.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(checkAuth.fulfilled, (state, action) => {
+                state.user = action.payload.data.user;
+                state.loading = false;
+                state.error = null;
+            })
+            .addCase(checkAuth.rejected, (state) => {
+                state.user = null;
+                state.token = null;
+                state.loading = false;
+                state.error = true;
+                Cookies.remove('authToken');
             });
     },
 });
