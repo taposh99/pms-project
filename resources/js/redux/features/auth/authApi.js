@@ -1,33 +1,22 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axiosSecure from "../../../hooks/useAxiosSecure";
+import Cookies from "js-cookie";
 
-const getCsrfToken = () => {
-    return document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-};
+const login = createAsyncThunk(
+    "/auth/login",
+    async (values, { rejectWithValue }) => {
+        try {
+            const response = await axiosSecure.post("/login", values);
+            const { token } = response.data.data[0];
+            Cookies.set("authToken", token, {
+                secure: true,
+                sameSite: "Strict",
+            });
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response);
+        }
+    }
+);
 
-export const authApi = createApi({
-    reducerPath: "authApi",
-    baseQuery: fetchBaseQuery({
-        baseUrl: "http://127.0.0.1:8000/api",
-        credentials: "include",
-        prepareHeaders: (headers) => {
-            headers.set("X-CSRF-TOKEN", getCsrfToken());
-            return headers;
-        },
-    }),
-    endpoints: (builder) => ({
-        loginUser: builder.mutation({
-            query: (data) => ({
-                url: "/login",
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    // "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
-                },
-                body: data,
-                // credentials: 'include'
-            }),
-        }),
-    }),
-});
-
-export const { useLoginUserMutation } = authApi;
+export default login;

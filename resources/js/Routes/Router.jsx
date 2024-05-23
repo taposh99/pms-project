@@ -3,6 +3,7 @@ import Home from "../Pages/Home/Home";
 import SignIn from "../Pages/AccessControl/SignIn/SignIn";
 import DashboardLayout from "../layout/DashboardLayout";
 import Dashboard from "../Pages/AuthorizedUser/Dashboard/Dashboard";
+import AuthorizedRoute from "./AuthorizedRoute";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,8 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashboardLayout />,
+        element: <AuthorizedRoute><DashboardLayout /></AuthorizedRoute>,
+        // element: <DashboardLayout />,
         children: [
             {
                 path: '/dashboard',

@@ -68,34 +68,38 @@ const ProductOverview = () => {
                 </button>
             </div>
             <table className='w-full text-center text-sm font-sora'>
-                <tr className='text-[#6B6B6B] border-b border-b-[#F5F5F5]'>
-                    <th className='font-medium pb-4'>#</th>
-                    <th className='font-medium pb-4'>Product Name</th>
-                    <th className='font-medium pb-4'>Status</th>
-                    <th className='font-medium pb-4'>Cost/per</th>
-                </tr>
-                {
-                    productsData.slice(0, showProducts).map(({ id, productName, status, cost }) => (
-                        <tr key={id} className='font-normal'>
-                            <td className='pt-4'>
-                                <p>{id}</p>
-                            </td>
-                            <td className='pt-4'>
-                                <p>{productName}</p>
-                            </td>
-                            <td className='pt-4'>
-                                <p
-                                    className={`px-2 py-1 text-white rounded-2xl text-xs font-sora tracking-wide ${status === "Checking" ? "bg-[#F76767]" : status === "Available" ? "bg-[#0FBE97]" : status === "Stored" ? "bg-[#F7C667]" : ""}`}
-                                >
-                                    {status}
-                                </p>
-                            </td>
-                            <td className='pt-4'>
-                                <p>{cost}</p>
-                            </td>
-                        </tr>
-                    ))
-                }
+                <thead>
+                    <tr className='text-[#6B6B6B] border-b border-b-[#F5F5F5]'>
+                        <th className='font-medium pb-4'>#</th>
+                        <th className='font-medium pb-4'>Product Name</th>
+                        <th className='font-medium pb-4'>Status</th>
+                        <th className='font-medium pb-4'>Cost/per</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        productsData.slice(0, showProducts).map(({ id, productName, status, cost }) => (
+                            <tr key={id} className='font-normal'>
+                                <td className='pt-4'>
+                                    <p>{id}</p>
+                                </td>
+                                <td className='pt-4'>
+                                    <p>{productName}</p>
+                                </td>
+                                <td className='pt-4'>
+                                    <p
+                                        className={`px-2 py-1 text-white rounded-2xl text-xs font-sora tracking-wide ${status === "Checking" ? "bg-[#F76767]" : status === "Available" ? "bg-[#0FBE97]" : status === "Stored" ? "bg-[#F7C667]" : ""}`}
+                                    >
+                                        {status}
+                                    </p>
+                                </td>
+                                <td className='pt-4'>
+                                    <p>{cost}</p>
+                                </td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
             </table>
         </div>
     );

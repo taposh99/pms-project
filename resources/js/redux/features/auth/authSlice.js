@@ -1,64 +1,63 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { authApi } from "./authApi";
+import { createSlice } from "@reduxjs/toolkit";
+import login from "./authApi";
+import Cookies from "js-cookie";
+import checkAuth from "./checkAuth";
 
 const initialState = {
-    name: "",
-    email: "",
-    isLoading: false,
-    isError: false,
-    error: "",
-    token: null,
+    user: null,
+    token: Cookies.get("authToken") || null,
+    loading: false,
+    error: null,
+    success: null,
+    message: null,
 };
 
-export const signinUser = createAsyncThunk(
-    "userSlice/signinUser",
-    async (action) => {
-        // const response = await authApi.loginUser(action);
-        // console.log("thunk data: ->>>>>", response);
-        // return response;
-    }
-);
-
-const userSlice = createSlice({
-    name: "userSlice",
+const authSlice = createSlice({
+    name: "auth",
     initialState,
-    reducers: {
-        setUserInfo(state, action) {
-            console.log("action inside slice", action);
-            state.name = action.payload.data[1].user.name;
-            state.email = action.payload.data[1].user.email;
-            state.token = action.payload.data[0].token;
-        },
-    },
     extraReducers: (builder) => {
         builder
-            .addCase(signinUser.pending, (state) => {
-                state.isLoading = true;
-                state.isError = false;
-                state.email = "";
-                state.name = "";
-                state.error = "";
+            .addCase(login.pending, (state) => {
+                state.user = null;
                 state.token = null;
+                state.loading = true;
+                state.error = null;
+                state.success = null;
+                state.message = null;
             })
-            .addCase(signinUser.fulfilled, (state, { payload }) => {
-                state.isLoading = false;
-                state.isError = false;
-                state.email = payload.email;
-                state.name = payload.name;
-                state.error = "";
-                state.token = payload.token;
+            .addCase(login.fulfilled, (state, action) => {
+                state.user = action.payload.data[1]?.user;
+                state.token = action.payload.data[0]?.token;
+                state.loading = false;
+                state.error = null;
+                state.success = action.payload.success;
+                state.message = action.payload.message;
             })
-            .addCase(signinUser.rejected, (state, action) => {
-                state.isLoading = false;
-                state.isError = true;
-                state.email = "";
-                state.name = "";
-                state.error = action.error.message;
+            .addCase(login.rejected, (state, action) => {
+                state.user = null;
                 state.token = null;
+                state.loading = false;
+                state.error = true;
+                state.success = action.payload.success;
+                state.message = action.payload.message;
+            })
+            .addCase(checkAuth.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(checkAuth.fulfilled, (state, action) => {
+                state.user = action.payload.data.user;
+                state.loading = false;
+                state.error = null;
+            })
+            .addCase(checkAuth.rejected, (state) => {
+                state.user = null;
+                state.token = null;
+                state.loading = false;
+                state.error = true;
+                Cookies.remove('authToken');
             });
     },
 });
 
-export const { setUserInfo } = userSlice.actions;
-
-export default userSlice.reducer;
+export const authReducer = authSlice.reducer;
+export default authSlice.reducer;

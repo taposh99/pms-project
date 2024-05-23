@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../../Component/Header/Header';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
-import { useLoginUserMutation } from '../../../redux/features/auth/authApi';
-import { useDispatch } from 'react-redux';
-import { setUserInfo } from '../../../redux/features/auth/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import login from '../../../redux/features/auth/authApi';;
 
 const SignIn = () => {
-    const [userLogin, { isLoading, error, data }] = useLoginUserMutation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [demoLoading, setDemoLoading] = useState(false);
-
+    const { user, loading, error, success, message } = useSelector(state => state.auth)
+    
     const { handleSubmit, handleChange, resetForm, errors, values, touched } = useFormik({
         initialValues: {
             email: '',
@@ -23,20 +21,15 @@ const SignIn = () => {
             password: Yup.string().required('Password is required'),
         }),
         onSubmit: async (values) => {
-            setDemoLoading(true);
-            const user = await userLogin(values).unwrap();
-            console.log(user);
-            if (user && user.data[0]?.token) {
-                resetForm();
-                setDemoLoading(false);
-                navigate('/dashboard');
-            }
-            setDemoLoading(false);
-            user.data[0]?.token && dispatch(setUserInfo(user));
+            dispatch(login(values));
         },
-
-
     });
+
+    useEffect(() => {
+        if (success && user) {
+            navigate('/dashboard');
+        }
+    }, [success])
 
     return (
         <>
@@ -70,11 +63,13 @@ const SignIn = () => {
                         <div className='text-xs text-red-600 mb-5'>{errors.password}</div>
                     ) : null}
 
-                    <button type="submit" className='relative bg-[#047CEB] text-white w-full py-3 rounded-md mt-8 mb-7 active:scale-95 duration-300'>
-                        {demoLoading &&
+                    <p className='text-center text-sm text-red-500 mb-5'>{message}</p>
+
+                    <button type="submit" className='relative bg-[#047CEB] text-white w-full py-3 rounded-md mb-7 active:scale-95 duration-300'>
+                        {loading &&
                             <span className="absolute left-44 w-6 h-6 animate-[spin_1s_linear_infinite] rounded-full border-4 border-r-white border-sky-400"></span>
                         }
-                        {demoLoading ? 'Submitting' : 'Submit'}
+                        {loading ? 'Submitting' : 'Submit'}
                     </button>
                     <Link className='block text-sm text-center underline mb-16'>Forgotten Password?</Link>
                 </form>

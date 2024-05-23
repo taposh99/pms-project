@@ -4,11 +4,17 @@ import { FaQuestion } from "react-icons/fa6";
 import { PiGearBold } from "react-icons/pi";
 import { FaRegBell } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const DashboardHeader = () => {
     const [showProfile, setShowProfile] = useState(false);
     const profileRef = useRef(null);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const handleLogout = () => {
+        navigate('/');
+    }
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -70,7 +76,7 @@ const DashboardHeader = () => {
             </div>
             <div onClick={(e) => e.stopPropagation()} className={`absolute lg:w-[280px] ${showProfile ? 'right-2 lg:right-10' : '-right-96'} top-[calc(100%+3px)] flex items-center justify-between gap-5 bg-white p-1 lg:p-3 shadow-[-2px_2px_10px_1px_rgba(0,0,0,0.1)] duration-300`}>
                 <button className='btn font-sora text-sm text-[#6B6B6B] px-2 lg:px-5 py-1 lg:py-3 border border-[#C4C4C4]'>Profile</button>
-                <button onClick={() => navigate('/')} className='btn font-sora text-sm text-[#6B6B6B] px-2 lg:px-5 py-1 lg:py-3 border border-[#C4C4C4]'>Logout</button>
+                <button onClick={handleLogout} className='btn font-sora text-sm text-[#6B6B6B] px-2 lg:px-5 py-1 lg:py-3 border border-[#C4C4C4]'>Logout</button>
             </div>
         </header>
     );
