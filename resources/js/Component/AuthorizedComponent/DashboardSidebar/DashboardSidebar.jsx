@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { RiHome5Line } from "react-icons/ri";
 import { BsBoxes } from "react-icons/bs";
 import { TbAutomaticGearbox } from "react-icons/tb";
+import { MdOutlineCategory } from "react-icons/md";
+import { TbManualGearbox } from "react-icons/tb";
 import { CgNotes } from "react-icons/cg";
 import { IoReceiptOutline } from "react-icons/io5";
 import { TbUserCheck } from "react-icons/tb";
@@ -11,7 +13,7 @@ import { GrDeliver } from "react-icons/gr";
 
 const DashboardSidebar = () => {
     const [openSubMenu, setOpenSubMenu] = useState(null);
-    
+
     const handleSubMenuToggle = (label) => {
         setOpenSubMenu(prev => (prev === label ? null : label));
     }
@@ -31,21 +33,21 @@ const DashboardSidebar = () => {
             subMenuItem: [
                 {
                     subLabel: 'Product List',
-                    subLink: '/dashboard/products/product-list',
+                    subLink: '/dashboard/products',
                     subLinkEnd: true,
                     subIcon: <TbAutomaticGearbox />,
                 },
                 {
                     subLabel: 'Categories',
                     subLink: '/dashboard/products/categories',
-                    subLinkEnd: true,
-                    subIcon: <TbAutomaticGearbox />,
+                    subLinkEnd: false,
+                    subIcon: <MdOutlineCategory />,
                 },
                 {
                     subLabel: 'Sub Categories',
                     subLink: '/dashboard/products/sub-categories',
-                    subLinkEnd: true,
-                    subIcon: <TbAutomaticGearbox />,
+                    subLinkEnd: false,
+                    subIcon: <TbManualGearbox />,
                 },
             ]
         },
@@ -119,7 +121,7 @@ const DashboardSidebar = () => {
                                                         to={subLink}
                                                         className={({ isActive }) => `
                                                             ${isActive ? 'bg-[#E6E6E6] border-[#047CEB] text-[#047CEB]' : 'border-transparent'}
-                                                            flex px-7 lg:px-16 items-center gap-2 py-2 border-l-[5px]`
+                                                            flex px-7 lg:pl-14 items-center gap-2 py-2 border-l-[5px]`
                                                         }
                                                     >
                                                         {subIcon}

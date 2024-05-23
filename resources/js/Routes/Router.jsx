@@ -29,10 +29,6 @@ const router = createBrowserRouter([
                 element: <h1>Hello products</h1>
             },
             {
-                path: 'products/product-list',
-                element: <h1>product list are here</h1>
-            },
-            {
                 path: 'products/categories',
                 element: <h1>categories are here</h1>
             },
