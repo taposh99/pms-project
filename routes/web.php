@@ -19,3 +19,19 @@ Route::get('/', function () {
 Route::get("{any?}", function () {
     return view('welcome');
 })->where('any', '.*');
+
+
+
+    /**
+     * Country API
+     */
+
+    Route::get('country', [CountryController::class, 'getAllCountry']);
+    Route::get('country/{country}', [CountryController::class, 'getCountry']);
+    Route::post('country', [CountryController::class, 'storeCountry']);
+    Route::put('country/{country}', [CountryController::class, 'updateCountry']);
+    Route::delete('country/{country}', [CountryController::class, 'deleteCountry']);
+
+    /**
+     * Supplier API
+     */
